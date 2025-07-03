@@ -1,0 +1,837 @@
+/* General Styling */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --accent-color: #28a745;
+    --text-color: #343a40;
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
+    --border-color: #e0e0e0;
+    --transparent-btn-color: #007bff;
+    --input-focus-shadow: rgba(0, 123, 255, 0.25);
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --card-hover-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+/* Header Styling */
+header {
+    background-color: var(--white);
+    padding: 15px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Removed flex-wrap here, will manage with media query */
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Default state for navigation (desktop) */
+nav {
+    flex-grow: 1;
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: var(--text-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+.auth-buttons {
+    flex-shrink: 0;
+}
+
+.auth-buttons .btn {
+    margin-left: 10px;
+}
+
+/* Hamburger menu button (hidden by default on desktop) */
+.hamburger-menu {
+    display: none; /* Sembunyikan di desktop */
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 15px; /* Jarak dari logo */
+}
+
+/* Button Styles */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn.primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn.primary:hover {
+    background-color: #0056b3;
+}
+
+.btn.secondary {
+    background-color: var(--secondary-color);
+    color: var(--white);
+}
+
+.btn.secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn.transparent {
+    background-color: transparent;
+    color: var(--transparent-btn-color);
+    border: 1px solid var(--transparent-btn-color);
+}
+
+.btn.transparent:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 123, 255, 0.6)), url('https://images.unsplash.com/photo-1510519138101-570d1dca3d6b?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+    color: var(--white);
+    text-align: center;
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+}
+
+.hero-section h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero-section p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+}
+
+/* General Section Styles */
+section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+section:nth-child(odd) {
+    background-color: var(--light-bg);
+}
+
+section:nth-child(even) {
+    background-color: var(--white);
+}
+
+section h2 {
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+}
+
+/* Products Section */
+.products-section {
+    background-color: var(--light-bg);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.product-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-hover-shadow);
+}
+
+.product-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: var(--light-bg);
+}
+
+.product-card h3 {
+    font-size: 1.7em;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.product-card p {
+    font-size: 1em;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    min-height: 50px;
+}
+
+.product-card .price {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 25px;
+}
+
+.product-card .price .per-month {
+    font-size: 0.7em;
+    font-weight: 400;
+    color: var(--secondary-color);
+}
+
+/* How It Works Section */
+.how-it-works-section {
+    background-color: var(--white);
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.step-card {
+    background-color: var(--light-bg);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    padding: 30px;
+    text-align: center;
+}
+
+.step-card .icon {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--primary-color);
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    background-color: rgba(0, 123, 255, 0.1);
+    margin: 0 auto 20px auto;
+}
+
+.step-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.step-card p {
+    color: var(--secondary-color);
+}
+
+/* Calculator Section - Modernized */
+.calculator-section {
+    background-color: var(--light-bg);
+    padding: 80px 0;
+}
+
+.calculator-section .description {
+    font-size: 1.1em;
+    color: var(--secondary-color);
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.calculator-card {
+    background-color: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 40px;
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.calculator-card .input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.calculator-card .input-group {
+    position: relative;
+}
+
+.calculator-card label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 1.05em;
+    color: var(--secondary-color);
+    pointer-events: none;
+    transition: all 0.2s ease-out;
+    background-color: var(--white);
+    padding: 0 5px;
+    transform-origin: left top;
+}
+
+.calculator-card input[type="number"] {
+    width: 100%;
+    padding: 20px 15px 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1.2em;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calculator-card input[type="number"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--input-focus-shadow);
+}
+
+/* Efek label melayang saat input fokus atau terisi */
+.calculator-card input[type="number"]:focus + label,
+.calculator-card input[type="number"]:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 10px;
+    font-size: 0.85em;
+    color: var(--primary-color);
+    transform: scale(0.9);
+}
+
+.calculator-card .results-section {
+    text-align: center;
+    background-color: var(--light-bg);
+    border-radius: 10px;
+    padding: 25px;
+    margin-top: 20px;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.calculator-card .results-section .result-label {
+    font-size: 1.1em;
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.calculator-card .results-section .result-value {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.calculator-card .results-section .result-value:last-of-type {
+    margin-bottom: 0;
+}
+
+.calculator-card .calculate-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.calculator-card .calculate-btn i {
+    font-size: 1.2em;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    background-color: var(--white);
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.testimonial-card {
+    background-color: var(--light-bg);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-hover-shadow);
+}
+
+.testimonial-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid var(--primary-color);
+}
+
+.testimonial-card .quote {
+    font-size: 1.1em;
+    font-style: italic;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.testimonial-card .customer-name {
+    font-size: 1.05em;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.testimonial-card .product-used {
+    font-size: 0.9em;
+    color: var(--secondary-color);
+}
+
+/* FAQ Section */
+.faq-section {
+    background-color: var(--light-bg);
+}
+
+.faq-item {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 25px;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    overflow: hidden;
+}
+
+.faq-item h3 {
+    font-size: 1.4em;
+    color: var(--text-color);
+    margin-bottom: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.3s ease;
+}
+
+.faq-item.active h3 {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.faq-item h3::after {
+    content: '\f067'; /* Plus icon Font Awesome */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active h3::after {
+    content: '\f068'; /* Minus icon Font Awesome */
+    transform: rotate(0deg);
+}
+
+.faq-item p {
+    font-size: 1em;
+    color: var(--secondary-color);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding-top 0.5s ease-out, margin-top 0.5s ease-out;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.faq-item.active p {
+    max-height: 1000px; /* Nilai yang sangat besar untuk memastikan konten tidak terpotong */
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: var(--text-color);
+    color: var(--white);
+    padding: 30px 0;
+    text-align: center;
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.social-links a {
+    color: var(--white);
+    margin: 0 15px;
+    font-size: 1.8em;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Back-to-Top Button */
+.back-to-top-btn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    z-index: 999;
+}
+
+.back-to-top-btn:hover {
+    background-color: #0056b3;
+    opacity: 0.9;
+}
+
+/* Animation Classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.slide-up.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animation Delays */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+
+/* Responsive Design (Mobile-first approach, then override for larger screens) */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    header .container {
+        flex-direction: row; /* Kembali ke row untuk menempatkan hamburger di kanan */
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 0; /* Hapus padding-bottom */
+    }
+
+    .logo {
+        margin-bottom: 0;
+        font-size: 1.6em;
+    }
+
+    /* Tampilkan hamburger menu di mobile */
+    .hamburger-menu {
+        display: block;
+        order: 3; /* Pastikan hamburger di kanan */
+    }
+    
+    /* Sembunyikan Auth Buttons di mobile, akan diatur di dalam menu */
+    .auth-buttons {
+        display: none; 
+    }
+
+    /* Navigasi (menu overlay) */
+    nav {
+        position: fixed; /* Overlay penuh layar */
+        top: 0;
+        left: -100%; /* Sembunyikan di luar layar */
+        width: 100%;
+        height: 100%;
+        background-color: var(--white); /* Latar belakang menu */
+        z-index: 999; /* Di atas konten lain */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: left 0.3s ease-in-out; /* Animasi geser */
+        text-align: center;
+    }
+
+    /* Saat menu aktif/terbuka */
+    nav.active {
+        left: 0; /* Geser masuk ke layar */
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        margin-left: 0;
+        padding: 0; /* Pastikan tidak ada padding ekstra */
+    }
+
+    nav ul li {
+        margin: 15px 0; /* Jarak antar item menu di overlay */
+    }
+    nav ul li a {
+        padding: 10px 0;
+        font-size: 1.5em; /* Ukuran font menu lebih besar di overlay */
+        color: var(--text-color); /* Warna teks menu */
+    }
+    nav ul li a:hover {
+        color: var(--primary-color);
+    }
+
+    /* Auth Buttons di dalam menu mobile */
+    .auth-buttons-mobile {
+        display: flex; /* Tampilkan di dalam menu aktif */
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 30px;
+        width: 80%; /* Lebar tombol di dalam menu */
+        max-width: 300px;
+    }
+    .auth-buttons-mobile .btn {
+        width: 100%;
+        font-size: 1.1em;
+        padding: 15px;
+    }
+    /* Pastikan .auth-buttons yang asli tersembunyi */
+    header .auth-buttons {
+        display: none;
+    }
+
+    /* Section headings and content */
+    .hero-section {
+        min-height: 400px;
+        padding: 60px 0;
+    }
+    .hero-section h1 {
+        font-size: 2.2em;
+    }
+    .hero-section p {
+        font-size: 1em;
+    }
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1.1em;
+    }
+
+    section {
+        padding: 60px 0;
+    }
+    section h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    /* Grid layouts */
+    .product-grid,
+    .steps-grid,
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    /* Card specific adjustments */
+    .product-card,
+    .step-card,
+    .testimonial-card,
+    .calculator-card {
+        padding: 25px;
+    }
+    .product-card h3 {
+        font-size: 1.5em;
+    }
+    .product-card p {
+        font-size: 0.95em;
+        min-height: auto;
+    }
+    .product-card .price {
+        font-size: 1.3em;
+    }
+    .testimonial-card .quote {
+        font-size: 1em;
+    }
+
+    /* Calculator Adjustments */
+    .calculator-card {
+        gap: 20px;
+    }
+    .calculator-card .input-section {
+        gap: 20px;
+    }
+    .calculator-card label {
+        font-size: 0.95em;
+    }
+    .calculator-card input[type="number"] {
+        font-size: 1.1em;
+        padding: 18px 15px 8px 15px;
+    }
+    .calculator-card input[type="number"]:focus + label,
+    .calculator-card input[type="number"]:not(:placeholder-shown) + label {
+        top: -8px;
+        left: 8px;
+        font-size: 0.75em;
+    }
+    .calculator-card .results-section .result-value {
+        font-size: 1.8em;
+    }
+
+    /* FAQ Adjustments */
+    .faq-item {
+        padding: 20px;
+    }
+    .faq-item h3 {
+        font-size: 1.25em;
+    }
+    .faq-item p {
+        font-size: 0.9em;
+    }
+    .faq-item.active p {
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+
+    /* Footer Adjustments */
+    footer p {
+        font-size: 1em;
+    }
+    .social-links a {
+        margin: 0 10px;
+        font-size: 1.5em;
+    }
+
+    /* Back-to-Top Button */
+    .back-to-top-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3em;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* Optional: Tambahkan breakpoint untuk tablet atau layar menengah jika diperlukan */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 0 25px;
+    }
+    /* Anda bisa menyesuaikan lebih lanjut di sini untuk tablet */
+}
